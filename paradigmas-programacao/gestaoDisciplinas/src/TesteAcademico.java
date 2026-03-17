@@ -14,6 +14,5 @@ public class TesteAcademico {
         prova01.adicionarQuestao(2, 2, "Sim ou não?");
         prova01.adicionarQuestao(3, 2, "Você esta tomando nota das aulas?");
 
-        System.out.println(dp01.toString());
     }
 }

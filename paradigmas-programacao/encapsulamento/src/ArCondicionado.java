@@ -7,14 +7,14 @@ public class ArCondicionado {
     private boolean compressor;
 
     public ArCondicionado(){
-        this.marca = "";
-        this.modelo = "";
+        this.marca = "Generico";
+        this.modelo = "Standard";
         this.ligado = false;
     }
 
-    public ArCondicionado(String marca, String modelo, int temperatura, boolean ligado){
+    public ArCondicionado(String marca, String modelo, int temperatura){
         this.setMarca(marca);
-        this.setModelo(modelo);
+        this.modelo = modelo;
         this.setTemperatura(temperatura);
         this.ligado = false;
     }
@@ -44,12 +44,18 @@ public class ArCondicionado {
         }
         this.temperatura = t;
     }
-    public int getTemperatura(){return temperatura;}
+
+    public int getTemperatura(){
+        return temperatura;
+    }
 
     public void setModelo(String m){
         this.modelo = m;
     }
-    public String getModelo(){return this.modelo;}
+
+    public String getModelo(){
+        return this.modelo;
+    }
 
     public void setMarca(String m){
         if (m != null && m.length() >= 3){
@@ -57,7 +63,10 @@ public class ArCondicionado {
         }
         else System.out.println("\nMarca Invalido");
     }
-    public String getMarca(){return this.marca;}
+
+    public String getMarca(){
+        return this.marca;
+    }
 
     private boolean verificarCompressor(){
         int numero = (int)(Math.random() * 10);

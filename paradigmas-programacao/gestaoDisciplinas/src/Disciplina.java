@@ -30,6 +30,15 @@ public class Disciplina {
         return novaAvaliacao;
     }
 
+    public Avaliacao getAvaliacoes(String nome){
+        for (Avaliacao av : avaliacoes){
+            if(av.getNome().equalsIgnoreCase(nome)){
+                return av;
+            }
+        }
+        return null;
+    }
+
     public int getId() {
         return id;
     }
