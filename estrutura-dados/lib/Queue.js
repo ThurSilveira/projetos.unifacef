@@ -6,17 +6,17 @@ export default class Queue{
         this.#data = []
     }
 
-    //métod de inserção na fila
+    //método de inserção na fila
     enqueue(val){
         this.#data.push(val)
     }
 
-    //métod de remoção na fila
+    //método de remoção na fila
     dequeue(){
         return this.#data.shift()
     }
 
-    //métod para consultar o inicio da fila sem remover o elemento
+    //método para consultar o inicio da fila sem remover o elemento
     peek(){
         return this.#data[0]
     }
@@ -25,7 +25,7 @@ export default class Queue{
         return this.#data.length === 0
     }
 
-    //métod para imprimir a fila(efeitos de depuração)
+    //método para imprimir a fila(efeitos de depuração)
     print(){
         let output = '[ '
         for(let i=0; i < this.#data.length; i++){
@@ -36,4 +36,5 @@ export default class Queue{
         }
         return output + " ]"
     }
-};
+
+}
