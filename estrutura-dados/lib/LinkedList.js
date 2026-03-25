@@ -55,8 +55,7 @@ export default class LinkedList {
             for (let i = 1; i < pos; i++) {
                 before = before.next;
             }
-            let after = before.next;
-            inserted.next = after;
+            inserted.next = before.next;
             before.next = inserted;
         }
 
@@ -137,4 +136,44 @@ export default class LinkedList {
         return -1
     }
 
+    peek(pos) {
+        //1º caso: lista vazia ou posição fora dos limetes
+        if (this.isEmpty || pos < 0 || pos > this.#count - 1) {
+            return undefined;
+        }
+
+        //2º caso: busca sequencial
+        let node = this.#head;
+
+        for (let i = 0; i < pos; i++) {
+            node = node.next;
+        }
+
+        return node.data;
+    }
+
+    //método para retornar (sem remover) o valor do primeiro nodo da lista(atalho)
+    peekHead() {
+        return this.peek(0)
+    }
+
+    //método para retornar (sem remover) o valor do último nodo da lista(atalho)
+    peekTail() {
+        return this.peek(this.#count - 1)
+    }
+
+    //método para exibição da lista encadeada
+    print(){
+        let output = '( '
+        let node = this.#head
+        for (let i = 0; i < this.#count; i++){
+            if(output !== '( ' ) {
+                output += ', '
+            }
+            output += `[${i}]: ${node.data}`
+            node = node.next
+        }
+        output += ` ), count: ${this.#count}`
+        return output
+    }
 }
