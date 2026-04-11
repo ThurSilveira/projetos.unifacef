@@ -1,4 +1,4 @@
-import Deque from "lib/Deque";
+import Deque from "./lib/Deque.js";
 
 let listaCompras = new Deque();
 console.log(listaCompras.print());
