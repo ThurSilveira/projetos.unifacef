@@ -130,7 +130,47 @@ export default class DoublyLinkedList{
         return this.remove(this.#count -1);
     }
 
-    peek(pos){
+    peek(pos) {
+        //Lista vazia ou posiação fora dos limites
+        if (this.isEmpty || pos < 0 || pos > this.#count - 1) return undefined;
+        const node = this.#findNode(pos);
+        return node.data;
+    }
 
+    peekHead() {
+        return this.peek(0);
+    }
+
+    peekTail() {
+        return this.peek(this.#count - 1);
+    }
+
+    //metodo que retorna a posição do nodo cujo conteúdo foi especificado
+    indexOf(val) {
+        const middle = Math.ceil(this.#count / 2);
+        let node1 = this.#head;
+        let node2 = this.#tail;
+
+        for (let pos = 0; pos < middle; pos++) {
+            if (val === node1.data) return pos;
+            if (val === node2.data) return this.#count - 1 - pos;
+
+            node1 = node1.next;
+            node2 = node2.prev;
+        }
+        return -1;
+    }
+
+    print() {
+        let output = "( "
+        let node = this.#head
+
+        for (let i = 0; i < this.#count; i++){
+            if(output !== "( ") output += ", "
+            output += `[${i}]: ${node.data}`
+            node = node.next
+        }
+        output += ` ), count: ${this.#count}`
+        return output
     }
 }
