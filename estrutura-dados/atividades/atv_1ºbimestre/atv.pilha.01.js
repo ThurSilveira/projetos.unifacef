@@ -1,4 +1,4 @@
-import Stack from "../lib/Stack.js";
+import Stack from "../../lib/Stack.js";
 
 let pilha = new Stack();
 

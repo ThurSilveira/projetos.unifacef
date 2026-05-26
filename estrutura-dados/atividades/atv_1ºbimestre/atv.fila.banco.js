@@ -1,4 +1,4 @@
-import Queue from "../lib/Queue.js";
+import Queue from "../../lib/Queue.js";
 
 // criando a fila
 let filaBanco = new Queue();

@@ -1,4 +1,4 @@
-import Stack from "../lib/Stack.js";
+import Stack from "../../lib/Stack.js";
 
 // criando as torres
 let TorreA = new Stack();

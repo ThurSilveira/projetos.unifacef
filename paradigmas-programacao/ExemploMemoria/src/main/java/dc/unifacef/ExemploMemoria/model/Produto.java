@@ -1,24 +1,24 @@
 package dc.unifacef.ExemploMemoria.model;
 
 public class Produto {
-    private long id;
+    private Long id;
     private String nome;
     private double preco;
     private Integer estoque;
 
     public Produto() {
     }
-    public Produto(long id, String nome, double preco, Integer estoque) {
+    public Produto(Long id, String nome, double preco, Integer estoque) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.estoque = estoque;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
