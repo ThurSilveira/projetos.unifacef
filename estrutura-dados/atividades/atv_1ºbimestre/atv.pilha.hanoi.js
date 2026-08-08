@@ -1,57 +1,21 @@
 import Stack from "../../lib/Stack.js";
 
-// criando as torres
-let TorreA = new Stack();
-let TorreB = new Stack();
-let TorreC = new Stack();
+const torreA = new Stack();
+const torreB = new Stack();
+const torreC = new Stack();
 
-// inicio
-TorreB.push(1);
-TorreB.push(2);
-TorreB.push(3);
-TorreB.push(4);
-
-// print antes
-console.log("TorreA:", TorreA.print()); // []
-console.log("TorreB:", TorreB.print()); // [1,2,3,4]
-console.log("TorreC:", TorreC.print()); // []
-
-// function para mover o disco
-function mover(origem, destino){
-    destino.push(origem.pop());
+for (let disco = 4; disco >= 1; disco--) {
+    torreA.push(disco);
 }
 
-mover(TorreB, TorreC)
+function moverDiscos(quantidade, origem, destino, auxiliar) {
+    if (quantidade === 0) return;
 
-mover(TorreB, TorreA)
+    moverDiscos(quantidade - 1, origem, auxiliar, destino);
+    destino.push(origem.pop());
+    moverDiscos(quantidade - 1, auxiliar, destino, origem);
+}
 
-mover(TorreC, TorreA)
-
-mover(TorreB, TorreC)
-
-mover(TorreA, TorreB)
-
-mover(TorreA, TorreC)
-
-mover(TorreB, TorreC)
-
-mover(TorreB, TorreA)
-
-mover(TorreC, TorreA);
-
-mover(TorreC, TorreB);
-
-mover(TorreA, TorreB);
-
-mover(TorreC, TorreA);
-
-mover(TorreB, TorreC);
-
-mover(TorreB, TorreA);
-
-mover(TorreC, TorreA);
-
-// print depois
-console.log("TorreA:", TorreA.print());
-console.log("TorreB:", TorreB.print());
-console.log("TorreC:", TorreC.print());
+console.log("Antes:", torreA.print(), torreB.print(), torreC.print());
+moverDiscos(4, torreA, torreC, torreB);
+console.log("Depois:", torreA.print(), torreB.print(), torreC.print());

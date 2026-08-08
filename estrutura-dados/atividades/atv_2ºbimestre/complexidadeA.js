@@ -1,6 +1,4 @@
-// =============================================
-// Gerador de array randomica grande para testes
-// =============================================
+// Gera a entrada compartilhada pelos exemplos.
 function gerarArrayRandomico(tamanho) {
     const arr = new Array(tamanho);
     for (let i = 0; i < tamanho; i++) {
@@ -9,10 +7,6 @@ function gerarArrayRandomico(tamanho) {
     return arr;
 }
 
-// =============================================
-// Counter / Analise de performance
-// Chamada por todas as funcoes de notacao
-// =============================================
 function analisarPerformance(notacao, tamanho, operacoes, inicio, fim) {
     const tempo = fim - inicio;
     let memoriaUsadaMB = 'N/A';
@@ -30,11 +24,8 @@ function contarOperacoes(contador) {
     contador.ops++;
 }
 
-// =============================================
-// O(1) - acesso direto por indice
-// Tempo constante, independente do tamanho
-// =============================================
-function exempleO1(array) {
+// O(1): acesso direto por índice.
+function exemploO1(array) {
     let operacoes = 0;
     const inicio = performance.now();
 
@@ -47,11 +38,8 @@ function exempleO1(array) {
     console.log(`Elemento acessado: ${elemento}`);
 }
 
-// =============================================
-// O(log n) - busca binaria
-// Divide o espaco de busca pela metade a cada passo
-// =============================================
-function exempleOLogN(array) {
+// O(log n): busca binária.
+function exemploOLogN(array) {
     const arrOrdenado = [...array].sort((a, b) => a - b);
     const alvo = arrOrdenado[Math.floor(arrOrdenado.length / 2)];
 
@@ -72,11 +60,8 @@ function exempleOLogN(array) {
     console.log(`Alvo: ${alvo} | Indice encontrado: ${encontrado}`);
 }
 
-// =============================================
-// O(n) - soma linear (percorre todo array)
-// Cresce proporcionalmente ao tamanho
-// =============================================
-function exempleOn(array) {
+// O(n): soma linear.
+function exemploOn(array) {
     const contador = { ops: 0 };
     const inicio = performance.now();
 
@@ -91,10 +76,7 @@ function exempleOn(array) {
     console.log(`Soma total: ${soma}`);
 }
 
-// =============================================
-// O(n log n) - merge sort
-// Divide e conquista: melhor caso para ordenacao
-// =============================================
+// O(n log n): merge sort.
 function _mergeSort(arr, contador) {
     if (arr.length <= 1) return arr;
     const meio = Math.floor(arr.length / 2);
@@ -116,7 +98,7 @@ function _merge(esq, dir, contador) {
     return resultado;
 }
 
-function exempleOnLogN(array) {
+function exemploOnLogN(array) {
     const amostra = array.slice(0, 100_000);
     const contador = { ops: 0 };
 
@@ -128,11 +110,8 @@ function exempleOnLogN(array) {
     console.log(`Menor: ${ordenado[0]} | Maior: ${ordenado[ordenado.length - 1]}`);
 }
 
-// =============================================
-// O(n²) - bubble sort
-// Dois loops aninhados: cresce quadraticamente
-// =============================================
-function exempleOn2(array) {
+// O(n²): bubble sort.
+function exemploOn2(array) {
     const amostra = array.slice(0, 10_000);
     const arr = [...amostra];
     const contador = { ops: 0 };
@@ -152,17 +131,14 @@ function exempleOn2(array) {
     console.log(`Menor: ${arr[0]} | Maior: ${arr[arr.length - 1]}`);
 }
 
-// =============================================
-// O(2^n) - fibonacci recursivo
-// Cada chamada gera duas sub-chamadas: crescimento exponencial
-// =============================================
+// O(2^n): Fibonacci recursivo.
 function _fibRecursivo(n, contador) {
     contarOperacoes(contador);
     if (n <= 1) return n;
     return _fibRecursivo(n - 1, contador) + _fibRecursivo(n - 2, contador);
 }
 
-function exempleO2n(n = 30) {
+function exemploO2n(n = 30) {
     const contador = { ops: 0 };
 
     const inicio = performance.now();
@@ -173,10 +149,7 @@ function exempleO2n(n = 30) {
     console.log(`Fibonacci(${n}): ${resultado}`);
 }
 
-// =============================================
-// O(n!) - permutacoes
-// Cresce fatorial: 8! = 40320, 10! = 3.6M
-// =============================================
+// O(n!): permutações.
 function _permutacoes(arr, atual, resultado, contador) {
     if (atual.length === arr.length) {
         contarOperacoes(contador);
@@ -192,7 +165,7 @@ function _permutacoes(arr, atual, resultado, contador) {
     }
 }
 
-function exempleOnFatorial(n = 8) {
+function exemploOnFatorial(n = 8) {
     const arr = Array.from({ length: n }, (_, i) => i + 1);
     const resultado = [];
     const contador = { ops: 0 };
@@ -205,18 +178,15 @@ function exempleOnFatorial(n = 8) {
     console.log(`Total permutacoes de ${n} elementos: ${resultado.length}`);
 }
 
-// =============================================
-// Execucao
-// =============================================
 const TAM = 100;
 console.log(`Gerando array randomico com ${TAM.toLocaleString()} elementos...`);
 const arrayGrande = gerarArrayRandomico(TAM);
 console.log('Array gerado. Executando analises:\n');
 
-exempleO1(arrayGrande);
-exempleOLogN(arrayGrande);
-exempleOn(arrayGrande);
-exempleOnLogN(arrayGrande);
-exempleOn2(arrayGrande);
-exempleO2n(30);
-exempleOnFatorial(8);
+exemploO1(arrayGrande);
+exemploOLogN(arrayGrande);
+exemploOn(arrayGrande);
+exemploOnLogN(arrayGrande);
+exemploOn2(arrayGrande);
+exemploO2n(30);
+exemploOnFatorial(8);

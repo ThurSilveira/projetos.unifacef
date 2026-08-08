@@ -1,8 +1,4 @@
-// Desafio: Crie um metodo countOccurrences(val) que conta quantas vezes um valor aparece na lista.
-// Regras:
-// O metodo deve percorrer toda a lista.
-// Retorna um número representando a quantidade de vezes que val aparece.
-// Teste com inserções repetidas de um mesmo valor.
+// Contagem de ocorrências na lista.
 
 class Node {
     constructor(val) {
@@ -36,7 +32,7 @@ class LinkedList {
             this.#head = inserted;
             this.#tail = inserted;
         }
-        else if (pos === 0) {
+        else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head = inserted;
         }

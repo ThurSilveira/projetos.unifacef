@@ -1,79 +1,60 @@
 import Stack from "../../lib/Stack.js";
 
-let pilha = new Stack();
+const pilha = new Stack();
 
-// estado inicial
-console.log(pilha.print()); // []
-console.log("Está vazia?\n", pilha.isEmpty); // true
+console.log(pilha.print());
+console.log("Está vazia?\n", pilha.isEmpty);
 
-// push(5)
 pilha.push(5);
-console.log(pilha.print()); // [5]
+console.log(pilha.print());
 
-// push(9)
 pilha.push(9);
-console.log(pilha.print()); // [5,9]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5]
+console.log(pilha.print());
 
-// push(3)
 pilha.push(3);
-console.log(pilha.print()); // [5,3]
+console.log(pilha.print());
 
-// push(8)
 pilha.push(8);
-console.log(pilha.print()); // [5,3,8]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5,3]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5]
+console.log(pilha.print());
 
-// push(6)
 pilha.push(6);
-console.log(pilha.print()); // [5,6]
+console.log(pilha.print());
 
-// push() -> undefined
 pilha.push();
-console.log(pilha.print()); // [5,6,null]
+console.log(pilha.print());
 
-// push(2)
 pilha.push(2);
-console.log(pilha.print()); // [5,6,null,2]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5,6,null]
+console.log(pilha.print());
 
-// push(10)
 pilha.push(10);
-console.log(pilha.print()); // [5,6,null,10]
+console.log(pilha.print());
 
-// push(1)
 pilha.push(1);
-console.log(pilha.print()); // [5,6,null,10,1]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5,6,null,10]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5,6,null]
+console.log(pilha.print());
 
-// push(15)
 pilha.push(15);
-console.log(pilha.print()); // [5,6,null,15]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5,6,null]
+console.log(pilha.print());
 
-// pop()
 pilha.pop();
-console.log(pilha.print()); // [5,6]
+console.log(pilha.print());

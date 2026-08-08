@@ -1,32 +1,27 @@
 export default class Stack {
+    #data;
 
-    #data // vetor privado
-
-    constructor(){
-        this.#data = []
+    constructor() {
+        this.#data = [];
     }
 
-    //método de inserção no vetor
-    push(val){
-        this.#data.push(val)
+    push(val) {
+        this.#data.push(val);
     }
 
-    //método para remoção do valor
-    pop(){
-        return this.#data.pop()
+    pop() {
+        return this.#data.pop();
     }
 
-    //método para consultar o topo da pilha
-    peek(){
-        return this.#data[this.#data.length - 1]
+    peek() {
+        return this.#data[this.#data.length - 1];
     }
 
-    get isEmpty(){
-        return this.#data.length === 0
+    get isEmpty() {
+        return this.#data.length === 0;
     }
 
-    print(){
-        return JSON.stringify(this.#data)
+    print() {
+        return JSON.stringify(this.#data);
     }
-
 }

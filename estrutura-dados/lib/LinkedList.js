@@ -6,9 +6,9 @@ class Node {
 }
 
 export default class LinkedList {
-    #head; // Início da lista (cabeça)
-    #tail; // Final da lista (cauda)
-    #count; // Quantidade de nodos da lista
+    #head;
+    #tail;
+    #count;
 
     constructor() {
         this.#head = null;
@@ -16,40 +16,32 @@ export default class LinkedList {
         this.#count = 0;
     }
 
-    //getter que retorna se a lista encadeada está vazia ou não
     get isEmpty() {
         return this.#count === 0;
     }
 
-    //getter que retorna a quantidade de elementos da lista
     get count() {
         return this.#count;
     }
 
-    //Método para inserir em qualquer posição
     insert(pos, val) {
-        //cria o nodo para armazenar o valor pretendido
         const inserted = new Node(val);
 
-        //1º caso: a lista está vazia
         if (this.isEmpty) {
             this.#head = inserted;
             this.#tail = inserted;
         }
 
-        //2º caso: inserção na primeira posição
-        else if (pos === 0) {
+        else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head = inserted;
         }
 
-        //3º caso: inserç]ao no final da lista
         else if (pos >= this.#count) {
             this.#tail.next = inserted;
             this.#tail = inserted;
         }
 
-        //4º caso: posição intermediária
         else {
             let before = this.#head;
             for (let i = 1; i < pos; i++) {
@@ -62,26 +54,21 @@ export default class LinkedList {
         this.#count++;
     }
 
-    //método para inserção na primeira posição (atalho)
     insertHead(val) {
         this.insert(0, val);
     }
 
-    //método para inserção na última posição (atalho)
     insertTail(val) {
         this.insert(this.#count, val);
     }
 
-    //método para remoção de um nodo na lista
     remove(pos) {
-        //1º caso: a lista está vazia ou a posição informada está fora dos limites da lista
         if (this.isEmpty || pos < 0 || pos > this.#count - 1) {
             return undefined;
         }
 
         let removed;
 
-        //2º caso: remoção do início da lista
         if (pos === 0) {
             removed = this.#head;
 
@@ -92,7 +79,6 @@ export default class LinkedList {
             }
         }
 
-        //3º caso: remoção de nodo intermediário ou final
         else {
             let before = this.#head;
 
@@ -108,41 +94,38 @@ export default class LinkedList {
             }
         }
         this.#count--;
-        return removed.data
+        return removed.data;
     }
 
-    removeHead(){
-        return this.remove(0)
+    removeHead() {
+        return this.remove(0);
     }
 
-    removeTail(){
-        return this.remove(this.#count - 1)
+    removeTail() {
+        return this.remove(this.#count - 1);
     }
 
-    indexOf(val){
-        //1º caso: lista vazia
-        if(this.isEmpty) {
-            return -1
+    indexOf(val) {
+        if (this.isEmpty) {
+            return -1;
         }
 
-        let node = this.#head
+        let node = this.#head;
 
-        for(let i = 0; i < this.#count; i++){
-            if(node.data === val){
-                return i
+        for (let i = 0; i < this.#count; i++) {
+            if (node.data === val) {
+                return i;
             }
-            node = node.next
+            node = node.next;
         }
-        return -1
+        return -1;
     }
 
     peek(pos) {
-        //1º caso: lista vazia ou posição fora dos limetes
         if (this.isEmpty || pos < 0 || pos > this.#count - 1) {
             return undefined;
         }
 
-        //2º caso: busca sequencial
         let node = this.#head;
 
         for (let i = 0; i < pos; i++) {
@@ -152,28 +135,25 @@ export default class LinkedList {
         return node.data;
     }
 
-    //método para retornar (sem remover) o valor do primeiro nodo da lista(atalho)
     peekHead() {
-        return this.peek(0)
+        return this.peek(0);
     }
 
-    //método para retornar (sem remover) o valor do último nodo da lista(atalho)
     peekTail() {
-        return this.peek(this.#count - 1)
+        return this.peek(this.#count - 1);
     }
 
-    //método para exibição da lista encadeada
-    print(){
-        let output = '( '
-        let node = this.#head
-        for (let i = 0; i < this.#count; i++){
-            if(output !== '( ' ) {
-                output += ', '
+    print() {
+        let output = "( ";
+        let node = this.#head;
+        for (let i = 0; i < this.#count; i++) {
+            if (output !== "( ") {
+                output += ", ";
             }
-            output += `[${i}]: ${node.data}`
-            node = node.next
+            output += `[${i}]: ${node.data}`;
+            node = node.next;
         }
-        output += ` ), count: ${this.#count}`
-        return output
+        output += ` ), count: ${this.#count}`;
+        return output;
     }
 }

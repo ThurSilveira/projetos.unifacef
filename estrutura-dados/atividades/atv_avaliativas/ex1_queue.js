@@ -1,11 +1,4 @@
-// Desafio: Modifique a classe Queue para contar quantas operações foram feitas na
-// fila.
-//     Regras:
-// 1. Crie uma variável privada #operationCount para contar quantas operações
-// foram realizadas (enqueue e dequeue).
-// 2. Adicione um metodo getOperationCount() que retorna o total de operações
-// feitas.
-// 3. Teste essa funcionalidade simulando uma fila de atendimento ao cliente.
+// Fila com contador de operações.
 
 class Queue {
     #data
@@ -53,7 +46,6 @@ class Queue {
 
 const fila = new Queue();
 
-// Inserindo clientes
 fila.enqueue("Ana");
 fila.enqueue("Bruno");
 fila.enqueue("Carlos");
@@ -61,11 +53,9 @@ fila.enqueue("Carlos");
 console.log("Fila inicial:", fila.print());
 console.log("Próximo da fila (peek):", fila.peek());
 
-// Removendo clientes (atendimento)
 console.log("Atendendo:", fila.dequeue());
 console.log("Atendendo:", fila.dequeue());
 
-// Verificando estado final
 fila.enqueue("Daniela");
 console.log("Fila atualizada:", fila.print());
 console.log("Total de operações:", fila.operationCount);

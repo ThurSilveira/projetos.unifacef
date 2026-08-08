@@ -1,10 +1,4 @@
-// Desafio: Modifique a classe Deque para não permitir valores duplicados.
-// Regras:
-// 1. Antes de adicionar um novo valor (insertFront ou insertBack), verifique se ele
-// já está na deque.
-// 2. Se o valor já existir, exiba uma mensagem de erro e ignore a inserção.
-// 3. Teste essa funcionalidade simulando um deque de itens únicos em um
-// carrinho de compras.
+// Deque sem valores duplicados.
 
 class Deque {
     #data;
@@ -40,7 +34,7 @@ class Deque {
     }
 
     get isEmpty() {
-        return this.#data.length === 0 ? "Sim, está vazia!" : "Não!"
+        return this.#data.length === 0;
     }
 
     print() {
@@ -60,13 +54,11 @@ const carrinho = new Deque();
 console.log("1. Adicionando itens ao carrinho...");
 carrinho.insertBack("Notebook");
 carrinho.insertBack("Mouse Sem Fio");
-carrinho.insertFront("Monitor 4K"); // Colocando como prioridade no início
+carrinho.insertFront("Monitor 4K");
 console.log("Carrinho atual:", carrinho.print());
 
 console.log("\n2. Tentando adicionar itens duplicados (deve exibir erro):");
-// Tentando adicionar "Notebook" que já está no final
 carrinho.insertBack("Notebook");
-// Tentando adicionar "Monitor 4K" que já está no início
 carrinho.insertFront("Monitor 4K");
 
 console.log("\n3. Adicionando um item novo:");
@@ -74,8 +66,8 @@ carrinho.insertBack("Teclado Mecânico");
 console.log("Carrinho atual:", carrinho.print());
 
 console.log("\n4. Removendo itens:");
-console.log("Removido da frente:", carrinho.removeFront()); // Monitor 4K
-console.log("Removido do fim:", carrinho.removeBack());    // Teclado Mecânico
+console.log("Removido da frente:", carrinho.removeFront());
+console.log("Removido do fim:", carrinho.removeBack());
 
 console.log("\n5. Estado final do carrinho:");
 console.log(carrinho.print());

@@ -1,8 +1,4 @@
-// Desafio: Crie um metodo reverse() que inverta a ordem dos nós da lista encadeada.
-// Regras:
-// Após chamar reverse(), o primeiro elemento vira o último e vice-versa.
-// A lista original é modificada — sem criar outra lista.
-// Teste a funcionalidade com print() antes e depois de inverter.
+// Inversão da lista no próprio encadeamento.
 
 class Node {
     constructor(val) {
@@ -37,7 +33,7 @@ class LinkedList {
             this.#head = inserted;
             this.#tail = inserted;
         }
-        else if (pos === 0) {
+        else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head = inserted;
         }

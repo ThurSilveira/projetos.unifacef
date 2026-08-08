@@ -1,11 +1,4 @@
-// Desafio: Modifique a classe Stack para armazenar um histórico dos elementos que
-// foram removidos (pop).
-//     Regras:
-// 1. Crie um array privado #historyData para armazenar os elementos removidos.
-// 2. Adicione um metodo history() para retornar os elementos que já foram
-// retirados da pilha.
-// 3. Teste essa funcionalidade simulando uma pilha de navegação em um
-// navegador (ex: páginas visitadas e removidas).
+// Pilha com histórico dos itens removidos.
 
 class Stack {
     #data
@@ -13,7 +6,7 @@ class Stack {
 
     constructor(){
         this.#data = []
-        this.#historyData = 0
+        this.#historyData = []
     }
 
     push(val){
@@ -22,8 +15,9 @@ class Stack {
 
     pop(){
         if (this.isEmpty) return undefined
-        this.#historyData++
-        return this.#data.pop()
+        const removed = this.#data.pop()
+        this.#historyData.push(removed)
+        return removed
     }
 
     peek(){
@@ -35,7 +29,7 @@ class Stack {
     }
 
     get history(){
-        return this.#historyData
+        return [...this.#historyData]
     }
 
     print(){
@@ -52,8 +46,8 @@ browserHistory.push("stackoverflow.com");
 console.log("Pilha atual:", browserHistory.print());
 
 console.log("\n2. Clicando no botão 'Voltar' (Pop)...");
-console.log("Saiu de:", browserHistory.pop()); // stackoverflow.com
-console.log("Saiu de:", browserHistory.pop()); // github.com
+console.log("Saiu de:", browserHistory.pop());
+console.log("Saiu de:", browserHistory.pop());
 
 console.log("\n3. Verificando estado atual:");
 console.log("Página aberta no momento (Peek):", browserHistory.peek());
@@ -62,5 +56,4 @@ console.log("Pilha restante:", browserHistory.print());
 console.log("\n4. Histórico de páginas fechadas (History):");
 console.log(browserHistory.history);
 
-// Verificação de segurança
 console.log("\nA pilha está vazia?", browserHistory.isEmpty);

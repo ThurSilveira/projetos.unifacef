@@ -1,0 +1,13 @@
+{
+  "name": "estrutura-dados",
+  "version": "1.0.0",
+  "description": "Exemplos, bibliotecas e atividades da disciplina de Estrutura de Dados - UniFACEF",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/testQueue.js && node tests/testDeque.js && node tests/testLinkedList.js && node tests/testDoublyLinkedList.js",
+    "grafos": "node grafos/BFS.js && node grafos/DFS.js && node grafos/algoritmos-grafos.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

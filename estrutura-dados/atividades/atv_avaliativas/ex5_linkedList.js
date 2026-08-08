@@ -1,7 +1,4 @@
-// Desafio: Crie um metodo toArray() que transforma a lista em um array comum ([]).
-// Regras:
-// O metodo deve retornar um array com os dados dos nós na ordem correta.
-// Utilize esse array para facilitar compar
+// Conversão da lista para array.
 
 class Node {
     constructor(val) {
@@ -36,7 +33,7 @@ export default class LinkedList {
             this.#head = inserted;
             this.#tail = inserted;
         }
-        else if (pos === 0) {
+        else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head = inserted;
         }

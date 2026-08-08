@@ -1,9 +1,4 @@
-// Desafio: Modifique a LinkedList para armazenar um histórico dos elementos removidos.
-// Regras:
-// Crie uma estrutura #removedHistory para armazenar os valores dos nós removidos.
-// Sempre que um valor for removido (remove()), adicione-o ao histórico.
-// Crie um metodo history() que retorne os elementos removidos.
-// Teste com inserções e remoções, e exiba o histórico final.
+// Lista com histórico de remoções.
 
 class Node {
     constructor(val) {
@@ -25,8 +20,8 @@ class LinkedList {
         this.#removedHistory = [];
     }
 
-    history(){
-        return console.log('Elementos removidos: ', this.#removedHistory)
+    history() {
+        return [...this.#removedHistory];
     }
 
     get isEmpty() {
@@ -45,7 +40,7 @@ class LinkedList {
             this.#tail = inserted;
         }
 
-        else if (pos === 0) {
+        else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head = inserted;
         }
@@ -162,7 +157,7 @@ lista.insertTail("Item3");
 
 console.log(`Lista atual: ${lista.print()}`);
 
-let hist = lista.history();
+const hist = lista.history();
 if (!hist || hist.length === 0) {
     console.log("Histórico de remoções: Nenhuma remoção ainda.");
 }

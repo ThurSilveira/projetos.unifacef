@@ -1,8 +1,4 @@
-// Desafio: Crie um metodo removeAll(val) que remove todas as ocorrências de um valor na lista.
-// Regras:
-// Percorra a lista e remova cada ocorrência de val.
-// Ajuste os ponteiros corretamente após cada remoção.
-// Teste com uma lista contendo vários valores repetidos.
+// Remoção de todas as ocorrências de um valor.
 
 class Node {
     constructor(val) {
@@ -30,7 +26,7 @@ class LinkedList {
         if (this.isEmpty) {
             this.#head = inserted;
             this.#tail = inserted;
-        } else if (pos === 0) {
+        } else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head = inserted;
         } else if (pos >= this.#count) {
@@ -47,7 +43,6 @@ class LinkedList {
 
     insertTail(val) { this.insert(this.#count, val); }
 
-    // --- DESAFIO: REMOVE ALL ---
     removeAll(val) {
         if (this.isEmpty) return 0;
         let countRemoved = 0;

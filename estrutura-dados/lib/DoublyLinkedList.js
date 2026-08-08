@@ -6,69 +6,64 @@ class Node {
     }
 }
 
-export default class DoublyLinkedList{
+export default class DoublyLinkedList {
     #head;
     #tail;
     #count;
 
-    constructor(){
+    constructor() {
         this.#head = null;
         this.#tail = null;
         this.#count = 0;
     }
 
-    get isEmpty(){
+    get isEmpty() {
         return this.#count === 0;
     }
 
-    get count(){
+    get count() {
         return this.#count;
     }
 
-    //metodo PRIVADO que encontra um nodo por sua posição
-    #findNode(pos){
+    #findNode(pos) {
         let node;
-        if (pos < this.#count / 2){
+        if (pos < this.#count / 2) {
             node = this.#head;
-            for (let i = 0; i < pos; i++){
+            for (let i = 0; i < pos; i++) {
                 node = node.next;
             }
         } else {
             node = this.#tail;
-            for (let i = this.#count - 1; i > pos; i--){
+            for (let i = this.#count - 1; i > pos; i--) {
                 node = node.prev;
             }
         }
         return node;
     }
 
-    insert(pos, val){
-        let inserted = new Node(val);
+    insert(pos, val) {
+        const inserted = new Node(val);
 
-        // 1º caso: lista vazia
-        if (this.isEmpty){
+        if (this.isEmpty) {
             this.#head = inserted;
             this.#tail = inserted;
         }
 
-        // 2º caso: inserção na primeira posição
-        else if (pos === 0){
+        else if (pos <= 0) {
             inserted.next = this.#head;
             this.#head.prev = inserted;
             this.#head = inserted;
         }
 
-        // 3º caso: inserção na última posição
-        else if (pos >= this.#count){
+        else if (pos >= this.#count) {
             inserted.prev = this.#tail;
             this.#tail.next = inserted;
             this.#tail = inserted;
         }
 
-        // 4º caso: inserção em posição intermediaria
-        else{
-            let nodePos = this.#findNode(pos);
-            let before = nodePos.prev;
+        else {
+            const nodePos = this.#findNode(pos);
+            const before = nodePos.prev;
             before.next = inserted;
             inserted.prev = before;
             inserted.next = nodePos;
@@ -77,42 +72,39 @@ export default class DoublyLinkedList{
         this.#count++;
     }
 
-    insertHead(val){
+    insertHead(val) {
         this.insert(0, val);
     }
 
-    insertTail(val){
+    insertTail(val) {
         this.insert(this.#count, val);
     }
 
-    remove(pos){ // metodo para remover um nodo de qualquer posição
-
-        // 1º caso: lista vazia ou posição fora dos limites
-        if(this.isEmpty || pos < 0 || pos > this.#count -1){ return undefined; }
+    remove(pos) {
+        if (this.isEmpty || pos < 0 || pos >= this.#count) {
+            return undefined;
+        }
 
         let removed;
 
-        // 2º caso: remoção do primeiro nodo
-        if (pos === 0){
+        if (pos === 0) {
             removed = this.#head;
             this.#head = removed.next;
             if (this.#head) { this.#head.prev = null; }
             if (this.#count === 1) { this.#tail = null; }
         }
 
-        // 3º caso: remoção do ultimo nodo
-        else if(pos === this.#count -1){
+        else if (pos === this.#count - 1) {
             removed = this.#tail;
             this.#tail = removed.prev;
             if (this.#tail) { this.#tail.next = null; }
             if (this.#count === 1) { this.#head = null; }
         }
 
-        // 4º caso: remoção em posição interminente
-        else{
+        else {
             removed = this.#findNode(pos);
-            let before = removed.prev;
-            let after = removed.next;
+            const before = removed.prev;
+            const after = removed.next;
 
             before.next = after;
             after.prev = before;
@@ -122,17 +114,16 @@ export default class DoublyLinkedList{
         return removed.data;
     }
 
-    removeHead(){
+    removeHead() {
         return this.remove(0);
     }
 
-    removeTail(){
-        return this.remove(this.#count -1);
+    removeTail() {
+        return this.remove(this.#count - 1);
     }
 
     peek(pos) {
-        //Lista vazia ou posiação fora dos limites
-        if (this.isEmpty || pos < 0 || pos > this.#count - 1) return undefined;
+        if (this.isEmpty || pos < 0 || pos >= this.#count) return undefined;
         const node = this.#findNode(pos);
         return node.data;
     }
@@ -145,32 +136,25 @@ export default class DoublyLinkedList{
         return this.peek(this.#count - 1);
     }
 
-    //metodo que retorna a posição do nodo cujo conteúdo foi especificado
     indexOf(val) {
-        const middle = Math.ceil(this.#count / 2);
-        let node1 = this.#head;
-        let node2 = this.#tail;
-
-        for (let pos = 0; pos < middle; pos++) {
-            if (val === node1.data) return pos;
-            if (val === node2.data) return this.#count - 1 - pos;
-
-            node1 = node1.next;
-            node2 = node2.prev;
+        let node = this.#head;
+        for (let pos = 0; pos < this.#count; pos++) {
+            if (val === node.data) return pos;
+            node = node.next;
         }
         return -1;
     }
 
     print() {
-        let output = "( "
-        let node = this.#head
+        let output = "( ";
+        let node = this.#head;
 
-        for (let i = 0; i < this.#count; i++){
-            if(output !== "( ") output += ", "
-            output += `[${i}]: ${node.data}`
-            node = node.next
+        for (let i = 0; i < this.#count; i++) {
+            if (output !== "( ") output += ", ";
+            output += `[${i}]: ${node.data}`;
+            node = node.next;
         }
-        output += ` ), count: ${this.#count}`
-        return output
+        output += ` ), count: ${this.#count}`;
+        return output;
     }
 }
