@@ -1,8 +1,47 @@
-.idea/
-*.iml
-out/
-build/
-*.iws
-
+# Sistema operacional
 .DS_Store
 Thumbs.db
+Desktop.ini
+
+# Editores e IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.classpath
+.factorypath
+.project
+.settings/
+.sts4-cache/
+
+# Node.js e TypeScript
+**/node_modules/
+**/dist/
+**/coverage/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.*
+!.env.example
+
+# Java e Maven
+**/target/
+**/build/
+**/out/
+**/bin/
+*.class
+*.mv.db
+*.trace.db
+
+# Código gerado e arquivos temporários
+**/src/generated/
+*.swp
+*.swo
+*.tmp
+*~
+
+# Metadados de ferramentas
+**/.github/modernize/
