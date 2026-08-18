@@ -1,0 +1,23 @@
+# Dependências
+node_modules/
+
+# Build / artefatos locais
+dist/
+coverage/
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Prisma e arquivos gerados
+/src/generated/
+/src/generated/prisma/
+
+# Editor / sistema
+.vscode/
+.idea/
+.DS_Store
+**/.DS_Store
+
+# Logs
+*.log
