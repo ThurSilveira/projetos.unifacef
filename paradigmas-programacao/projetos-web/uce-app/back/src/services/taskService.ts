@@ -37,3 +37,8 @@ export async function remove(id: number) {
   await findById(id);
   return taskRepository.remove(id);
 }
+
+export async function toggleStatus(id: number) {
+  const task = await findById(id);
+  return taskRepository.update(id, { completed: !task.completed });
+}

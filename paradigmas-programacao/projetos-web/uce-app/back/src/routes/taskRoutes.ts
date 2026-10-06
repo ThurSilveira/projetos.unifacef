@@ -8,6 +8,7 @@ router.get("/", taskController.list);
 router.get("/:id", taskController.getById);
 router.post("/", taskController.create);
 router.put("/:id", taskController.update);
+router.patch("/:id/toggle", taskController.toggleStatus);
 router.delete("/:id", taskController.remove);
 
 export default router;

@@ -4,10 +4,12 @@ node_modules/
 # Build / artefatos locais
 dist/
 coverage/
+.nyc_output/
 
 # Variáveis de ambiente
 .env
 .env.*
+!.env.example
 
 # Prisma e arquivos gerados
 /src/generated/
@@ -18,6 +20,21 @@ coverage/
 .idea/
 .DS_Store
 **/.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Logs
+# Logs e Processos
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Docker
+docker-compose.override.yml

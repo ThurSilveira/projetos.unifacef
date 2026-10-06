@@ -41,3 +41,11 @@ export async function remove(
   await taskService.remove(id);
   res.status(204).send();
 }
+
+export async function toggleStatus(
+  req: Request, res: Response
+) {
+  const id = Number(req.params.id);
+  const task = await taskService.toggleStatus(id);
+  res.json(task);
+}
